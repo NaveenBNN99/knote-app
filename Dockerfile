@@ -4,17 +4,17 @@ FROM node:14
 # Set the working directory within the container
 WORKDIR /app
 
-# Copy package.json and package-lock.json to the working directory
-COPY package*.json ./
+# Copy package.json and package-lock.json from the 01 folder to the working directory
+COPY 01/package*.json ./
 
 # Install application dependencies
 RUN npm install
 
-# Copy application source code to the working directory
+# Copy application source code from the current directory to the working directory
 COPY . .
 
-# Expose the port that the app runs on
+# Expose the port that the app runs on (inside the container)
 EXPOSE 3000
 
-# Start the application
+# Define the command to start the application
 CMD ["node", "app.js"]
